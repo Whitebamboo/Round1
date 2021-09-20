@@ -92,6 +92,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("NightmareSec"))
         {
             isSlowDown = true;
+            gethurt = true;
+            boyAC.SetBool("GetHurt", true);
             agent.speed = 0.035f;
             agent.acceleration = 0.15f;
             boyAC.speed = 0.5f;
