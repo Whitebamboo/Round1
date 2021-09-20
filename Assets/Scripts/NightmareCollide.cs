@@ -9,6 +9,7 @@ public class NightmareCollide : MonoBehaviour
     public Material fadingMaterial1;
     public Material fadingMaterial2;
     public Animator nightmareAC;
+    public GameObject children;
 
     public bool isChanged;
     // Start is called before the first frame update
@@ -58,7 +59,7 @@ public class NightmareCollide : MonoBehaviour
     private IEnumerator dissolveTwo()
     {
         yield return new WaitForSeconds(1f);
-        gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial2;
+        children.GetComponent<SkinnedMeshRenderer>().material = fadingMaterial1;
         fadingMaterial1.SetFloat("_FadeStartTime", Time.time);
     }
 

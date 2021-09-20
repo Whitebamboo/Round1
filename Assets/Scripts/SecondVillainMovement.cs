@@ -28,7 +28,7 @@ public class SecondVillainMovement : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 /*        agent = GetComponentInParent<NavMeshAgent>();*/
-        nightmareAC = GetComponent<Animator>();
+        /*nightmareAC = GetComponent<Animator>();*/
         target = GameObject.FindGameObjectWithTag("MainCharacter");
         isPatroling = false;
         StartCoroutine(CalcVelocity());
