@@ -52,6 +52,7 @@ public class VillainMovement : MonoBehaviour
         //checking whether the villain is patrol or chase the target after get alerted
         if (distance < alertDistance)
         {
+            SoundManage.Instance.PlayWITSound();
             agent.SetDestination(target.transform.position);
             isAlert = true;
         }

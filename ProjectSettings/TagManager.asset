@@ -9,6 +9,7 @@ TagManager:
   - Nightmare
   - Destination
   - NightmareSec
+  - HelpSoundTrigger
   layers:
   - Default
   - TransparentFX

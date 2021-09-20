@@ -9,7 +9,7 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 90;
-    public int currentHealth;
+    public static int currentHealth;
 
     [SerializeField] private Volume volume;
     [SerializeField] private VolumeProfile volumeProfile_1;
@@ -82,6 +82,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Nightmare"))
         {
             TakeDamage(30);
+            SoundManage.Instance.PlayScreamingSound();
+            SoundManage.Instance.PlayAttackedSound();
             GetHurt();
             Destroy(collision.gameObject,2f);
             collision.gameObject.GetComponent<VillainMovement>().enabled = false;
@@ -138,6 +140,10 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Destination"))
         {
             SceneManager.LoadScene(2);
+        }
+        else if (other.CompareTag("HelpSoundTrigger"))
+        {
+            SoundManage.Instance.PlayHelpSound();
         }
     }
 
