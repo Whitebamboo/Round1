@@ -6,8 +6,6 @@ using UnityEngine.AI;
 public class SecondVillainMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject target;
-    NavMeshAgent agent;
     public float alertDistance;
     public float waitTime;
 
@@ -15,20 +13,25 @@ public class SecondVillainMovement : MonoBehaviour
     public bool isPatroling;
     public bool isAlert;
     public Vector3 DesiredPosition;
+    Vector3 lastPos;
     float rePatrolTime = 2f;
+    public float movesSpeed;
 
     public AudioClip[] nightmareSounds;
     public AudioSource audioSource;
-    public GameObject testboy;
     public Animator nightmareAC;
     public Material fadingMaterial;
+    public GameObject target;
+    NavMeshAgent agent;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
         nightmareAC = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("MainCharacter");
         isPatroling = false;
+        StartCoroutine(CalcVelocity());
     }
 
     // Update is called once per frame
@@ -48,6 +51,14 @@ public class SecondVillainMovement : MonoBehaviour
                 rePatrolTime = 4f;
 
             }
+        }
+        if (movesSpeed > 0.01)
+        {
+            nightmareAC.SetBool("isMoving", true);
+        }
+        else
+        {
+            nightmareAC.SetBool("isMoving", false);
         }
         //checking whether the villain is patrol or chase the target after get alerted
         if (distance < alertDistance)
@@ -99,5 +110,16 @@ public class SecondVillainMovement : MonoBehaviour
             fadingMaterial.SetFloat("_FadeStartTime", Time.time);*/
             audioSource.Play();
         }
+    }
+
+    IEnumerator CalcVelocity()
+    {
+        while (Application.isPlaying)
+        {
+            lastPos = transform.position;
+            yield return new WaitForFixedUpdate();
+            movesSpeed = Vector3.Distance(transform.position, lastPos) / Time.fixedDeltaTime;
+        }
+
     }
 }

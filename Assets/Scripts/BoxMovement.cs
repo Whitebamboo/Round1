@@ -13,6 +13,10 @@ public class BoxMovement : MonoBehaviour
     public float distanceToP1;
     public float distanceToP2;
     NavMeshAgent agent;
+    public float movesSpeed;
+    Vector3 lastPos;
+    public bool isWalking;
+    public Animator boyAC;
     // Start is called before the first frame update
 
     float timer = 0.4f;
@@ -24,6 +28,8 @@ public class BoxMovement : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(destination1.transform.position);
+        boyAC = GetComponentInChildren<Animator>();
+        StartCoroutine(CalcVelocity());
 
         time = timer;
     }
@@ -43,15 +49,28 @@ public class BoxMovement : MonoBehaviour
                     agent.SetDestination(destination1.transform.position);
                 }*/
 
-        time -= Time.deltaTime;
-        
-        if(time < 0)
+        if (movesSpeed > 0.01)
         {
-            int i = Random.Range(0, footSteps.Length);
-            audioSource.clip = footSteps[i];
-            audioSource.Play();
-            // play
-            time = timer;
+            isWalking = true;
+            boyAC.SetBool("isWalking", true);
+        }
+        else
+        {
+            isWalking = false;
+            boyAC.SetBool("isWalking", false);
+        }
+
+        if (isWalking)
+        {
+            time -= Time.deltaTime;
+            if (time < 0)
+            {
+                int i = Random.Range(0, footSteps.Length);
+                audioSource.clip = footSteps[i];
+                audioSource.Play();
+                // play
+                time = timer;
+            }
         }
     }
 
@@ -65,5 +84,15 @@ public class BoxMovement : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             Debug.Log("Sound");
         }
+    }
+    IEnumerator CalcVelocity()
+    {
+        while (Application.isPlaying)
+        {
+            lastPos = transform.position;
+            yield return new WaitForFixedUpdate();
+            movesSpeed = Vector3.Distance(transform.position, lastPos) / Time.fixedDeltaTime;
+        }
+
     }
 }
