@@ -140,12 +140,19 @@ public class Player : MonoBehaviour
         Debug.Log("trigger");
         if (other.CompareTag("Destination"))
         {
-            SceneManager.LoadScene(2);
+            endGameChangeScene();
         }
         else if (other.CompareTag("HelpSoundTrigger"))
         {
             SoundManage.Instance.PlayHelpSound();
         }
+    }
+
+    private IEnumerator endGameChangeScene()
+    {
+        SoundManage.Instance.PlayWinGameSound();
+        yield return new WaitForSeconds(10.5f);
+        SceneManager.LoadScene(2);
     }
 
 }

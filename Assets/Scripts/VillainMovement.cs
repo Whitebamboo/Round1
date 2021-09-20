@@ -21,6 +21,9 @@ public class VillainMovement : MonoBehaviour
     public AudioSource audioSource;
     public Animator nightmareAC;
     public Material fadingMaterial;
+
+    private bool WITSoundPlayed; 
+
     void Start()
     {
         alertDistance = 0.2f;
@@ -29,6 +32,7 @@ public class VillainMovement : MonoBehaviour
         nightmareAC = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("MainCharacter");
         isPatroling = false;
+        WITSoundPlayed = false;
     }
 
     // Update is called once per frame
@@ -52,7 +56,11 @@ public class VillainMovement : MonoBehaviour
         //checking whether the villain is patrol or chase the target after get alerted
         if (distance < alertDistance)
         {
-            SoundManage.Instance.PlayWITSound();
+            if (!WITSoundPlayed)
+            {
+                SoundManage.Instance.PlayWITSound();
+                WITSoundPlayed = true;
+            }
             agent.SetDestination(target.transform.position);
             isAlert = true;
         }
