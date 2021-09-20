@@ -22,7 +22,7 @@ public class SecondVillainMovement : MonoBehaviour
     public Animator nightmareAC;
     public Material fadingMaterial;
     public GameObject target;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     void Start()
     {
@@ -99,18 +99,18 @@ public class SecondVillainMovement : MonoBehaviour
                     }
                 }*/
     }
-    private void OnCollisionEnter(Collision collision)
+/*    private void OnCollisionEnter(Collision collision)
     {
-/*        Debug.Log("collision");*/
+        Debug.Log("collision");
         if (collision.gameObject.CompareTag("MainCharacter"))
         {
             nightmareAC.SetTrigger("Attack");
             audioSource.clip = nightmareSounds[0];
-/*            gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial;
-            fadingMaterial.SetFloat("_FadeStartTime", Time.time);*/
+            gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial;
+            fadingMaterial.SetFloat("_FadeStartTime", Time.time);
             audioSource.Play();
         }
-    }
+    }*/
 
     IEnumerator CalcVelocity()
     {

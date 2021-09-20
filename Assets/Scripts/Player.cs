@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
@@ -15,12 +16,31 @@ public class Player : MonoBehaviour
     [SerializeField] private VolumeProfile volumeProfile_2;
     [SerializeField] private VolumeProfile volumeProfile_3;
 
-    public static bool winStatus; 
+    public static bool winStatus;
+
+    NavMeshAgent agent;
+    public bool isSlowDown;
+    public bool gethurt;
+    float getHurtTime;
+    public float hurtDuration;
+    float time;
+    public float slowDownDuration;
+    public Animator boyAC;
+    public BoxMovement playermovement;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        boyAC = GetComponentInChildren<Animator>();
+        isSlowDown = false;
+        gethurt = false;
+        hurtDuration = 2f;
+        getHurtTime = hurtDuration;
+        slowDownDuration = 5f;
+        time = slowDownDuration;
         winStatus = true;
         currentHealth = maxHealth;
     }
@@ -29,15 +49,52 @@ public class Player : MonoBehaviour
     void Update()
     {
         healthStatus();
+        if (isSlowDown)
+        {
+            time -= Time.deltaTime;
+            if (time < 0)
+            {
+                agent.speed = 0.07f;
+                agent.acceleration = 0.3f;
+                boyAC.speed = 1f;
+                // play
+                time = slowDownDuration;
+                isSlowDown = false;
+            }
+        }
+        if (gethurt)
+        {
+            getHurtTime -= Time.deltaTime;
+            if (getHurtTime < 0)
+            {
+                boyAC.SetBool("GetHurt", false);
+                agent.speed = 0.07f;
+                agent.acceleration = 0.3f;
+                // play
+                getHurtTime = hurtDuration;
+                gethurt = false;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
         if (collision.gameObject.CompareTag("Nightmare"))
         {
             TakeDamage(30);
-            Destroy(collision.gameObject,3f);
+            GetHurt();
+            Destroy(collision.gameObject,2f);
+            collision.gameObject.GetComponent<VillainMovement>().enabled = false;
+        }
+
+        if (collision.gameObject.CompareTag("NightmareSec"))
+        {
+            isSlowDown = true;
+            agent.speed = 0.035f;
+            agent.acceleration = 0.15f;
+            boyAC.speed = 0.5f;
+            Destroy(collision.gameObject, 2f);
+            collision.gameObject.GetComponent<SecondVillainMovement>().enabled = false;
         }
     }
 
@@ -45,6 +102,14 @@ public class Player : MonoBehaviour
     {
         currentHealth -= damage;
     }
+    private void GetHurt()
+    {
+        gethurt = true;
+        boyAC.SetBool("GetHurt",true);
+        agent.speed = 0f;
+        agent.acceleration = 0f;
+    }
+
 
     private void healthStatus()
     {
@@ -75,4 +140,5 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(2);
         }
     }
+
 }

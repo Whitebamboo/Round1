@@ -8,6 +8,7 @@ TagManager:
   - MainCharacter
   - Nightmare
   - Destination
+  - NightmareSec
   layers:
   - Default
   - TransparentFX

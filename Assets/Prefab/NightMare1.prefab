@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 761012288080444877}
   - component: {fileID: 761012288080444878}
   - component: {fileID: 761012288080444879}
+  - component: {fileID: 1438004530817510729}
   m_Layer: 0
   m_Name: NightMare1
   m_TagString: Nightmare
@@ -206,7 +207,6 @@ MonoBehaviour:
   nightmareSounds:
   - {fileID: 8300000, guid: f63750ba42246a24ebe54e1f0fbec006, type: 3}
   audioSource: {fileID: 0}
-  testboy: {fileID: 0}
   nightmareAC: {fileID: 0}
   fadingMaterial: {fileID: 2100000, guid: 451c83d4894c2a248be1eba40278ea28, type: 2}
 --- !u!195 &761012288080444879
@@ -231,6 +231,25 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1438004530817510729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454513321579388618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da327a451495d34d8023232160fd8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nightmareSounds:
+  - {fileID: 8300000, guid: f63750ba42246a24ebe54e1f0fbec006, type: 3}
+  audioSource: {fileID: 0}
+  fadingMaterial1: {fileID: 2100000, guid: 451c83d4894c2a248be1eba40278ea28, type: 2}
+  fadingMaterial2: {fileID: 2100000, guid: 46abb33c9b469aa43b8367a197a28e89, type: 2}
+  nightmareAC: {fileID: 0}
+  isChanged: 0
 --- !u!1 &952600584462977736
 GameObject:
   m_ObjectHideFlags: 0

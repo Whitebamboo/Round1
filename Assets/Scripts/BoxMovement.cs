@@ -16,6 +16,7 @@ public class BoxMovement : MonoBehaviour
     public float movesSpeed;
     Vector3 lastPos;
     public bool isWalking;
+    public bool isSlowDown;
     public Animator boyAC;
     // Start is called before the first frame update
 
@@ -74,7 +75,7 @@ public class BoxMovement : MonoBehaviour
         }
     }
 
-   private IEnumerator footstepSound()
+    private IEnumerator footstepSound()
     {
         if (!audioSource.isPlaying)
         {
@@ -95,4 +96,6 @@ public class BoxMovement : MonoBehaviour
         }
 
     }
+
+
 }
