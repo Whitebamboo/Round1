@@ -69,7 +69,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Destination")){
+        Debug.Log("trigger");
+        if (other.CompareTag("Destination"))
+        {
             SceneManager.LoadScene(2);
         }
     }
