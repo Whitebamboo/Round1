@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SparklingSub_c5b59d6cc61d492d83882d35528376a2_Texture2D8de4906633104f52a449d0bdba04e5c2_1288892347:
-        m_Texture: {fileID: 2800000, guid: 260cbe030b947a749b9e4962d9929571, type: 3}
+        m_Texture: {fileID: 2800000, guid: bdfb6491d5c30b94ab3c9f09adaa3db4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -99,7 +99,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Hue: 0.15048969
+    - _Hue: 0.3452132
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
