@@ -24,6 +24,8 @@ public class SecondVillainMovement : MonoBehaviour
     public GameObject target;
     public NavMeshAgent agent;
 
+    private bool WITSound2Played;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -32,6 +34,7 @@ public class SecondVillainMovement : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("MainCharacter");
         isPatroling = false;
         StartCoroutine(CalcVelocity());
+        WITSound2Played = false;
     }
 
     // Update is called once per frame
@@ -63,6 +66,11 @@ public class SecondVillainMovement : MonoBehaviour
         //checking whether the villain is patrol or chase the target after get alerted
         if (distance < alertDistance)
         {
+            if (!WITSound2Played)
+            {
+                SoundManage.Instance.PlayWITSound2();
+                WITSound2Played = true;
+            }
             agent.SetDestination(target.transform.position);
             isAlert = true;
         }

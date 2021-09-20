@@ -12,6 +12,7 @@ public class SoundManage : MonoBehaviour
     [SerializeField] private AudioSource attactAudioSource;
     [SerializeField] private AudioSource WITAudioSource;
     [SerializeField] private AudioSource screamingAudioSource;
+    [SerializeField] private AudioSource winAudioSource;
 
     public static SoundManage Instance;
     // Start is called before the first frame update
@@ -61,5 +62,10 @@ public class SoundManage : MonoBehaviour
     public void PlayScreamingSound()
     {
         screamingAudioSource.Play();
+    }
+
+    public void PlayWinGameSound()
+    {
+        winAudioSource.Play();
     }
 }
