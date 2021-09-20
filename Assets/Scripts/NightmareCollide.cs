@@ -51,15 +51,15 @@ public class NightmareCollide : MonoBehaviour
 
     private IEnumerator dissolveOne()
     {
+        yield return new WaitForSeconds(1f);
         gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial1;
         fadingMaterial1.SetFloat("_FadeStartTime", Time.time);
-        yield return new WaitForSeconds(1f);
     }
     private IEnumerator dissolveTwo()
     {
+        yield return new WaitForSeconds(1f);
         gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial2;
         fadingMaterial1.SetFloat("_FadeStartTime", Time.time);
-        yield return new WaitForSeconds(1f);
     }
 
 }
