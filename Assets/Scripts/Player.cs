@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
     {
         gethurt = true;
         boyAC.SetBool("GetHurt",true);
+        agent.velocity = new Vector3(0,0,0);
         agent.speed = 0f;
         agent.acceleration = 0f;
     }
