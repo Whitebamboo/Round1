@@ -66,4 +66,13 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(2);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("trigger");
+        if (other.CompareTag("Destination"))
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
 }

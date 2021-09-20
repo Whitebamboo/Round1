@@ -886,6 +886,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -176541222374604706, guid: 933dd6e61ea5d5a45a3a0eeedbca06f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.749
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 933dd6e61ea5d5a45a3a0eeedbca06f2, type: 3}
       propertyPath: m_Name
       value: Boy_Standing
@@ -2845,12 +2849,13 @@ GameObject:
   - component: {fileID: 588135828}
   - component: {fileID: 588135827}
   - component: {fileID: 588135826}
+  - component: {fileID: 588135830}
   m_Layer: 0
   m_Name: Destination
   m_TagString: Destination
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &588135826
 BoxCollider:
@@ -2860,8 +2865,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588135825}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2928,6 +2933,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &588135830
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588135825}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &588395424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8110,7 +8131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148444210313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8429, y: -0.3833, z: 0.936}
+  m_LocalPosition: {x: -0.762, y: -0.3833, z: 0.941}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2127026514}
