@@ -27,6 +27,7 @@ public class changePicture : MonoBehaviour
 
     private IEnumerator displayPicture()
     {
+        
         this.gameObject.GetComponent<MeshRenderer>().material = Material_1;
         bgm.Play();
         yield return new WaitForSeconds(3f);

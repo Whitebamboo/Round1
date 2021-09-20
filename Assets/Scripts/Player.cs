@@ -15,10 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField] private VolumeProfile volumeProfile_2;
     [SerializeField] private VolumeProfile volumeProfile_3;
 
+    public static bool winStatus; 
+
 
     // Start is called before the first frame update
     void Start()
     {
+        winStatus = true;
         currentHealth = maxHealth;
     }
 
@@ -34,7 +37,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Nightmare"))
         {
             TakeDamage(30);
-            Destroy(collision.gameObject,0.9f);
+            Destroy(collision.gameObject,3f);
         }
     }
 
@@ -59,7 +62,8 @@ public class Player : MonoBehaviour
         }
         else if (currentHealth == 0)
         {
-            SceneManager.LoadScene(1);
+            winStatus = false;
+            SceneManager.LoadScene(2);
         }
     }
 }

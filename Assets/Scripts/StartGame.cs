@@ -21,7 +21,7 @@ public class StartGame : MonoBehaviour
     }
     private IEnumerator changeScene()
     {
-        yield return new WaitForSeconds(17.5f);
+        yield return new WaitForSeconds(23.5f);
         SceneManager.LoadScene(1);
     }
 
