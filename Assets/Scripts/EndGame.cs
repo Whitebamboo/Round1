@@ -13,13 +13,16 @@ public class EndGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player.winStatus = true;
+        //Player.winStatus = true;
         if (Player.winStatus)
         {
             StartCoroutine("displayWinPicture");
         }
         else
         {
+            //SoundManage.Instance.StopMazeBaseBGM();
+            //SoundManage.Instance.PlayLoseBGM();
+            //SoundManage.Instance.PlayLoseSFX();
             this.gameObject.GetComponent<MeshRenderer>().material = Material_4;
         }
     }

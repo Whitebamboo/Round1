@@ -26,7 +26,7 @@ public class VillainMovement : MonoBehaviour
 
     void Start()
     {
-        alertDistance = 0.2f;
+        //alertDistance = 0.2f;
         audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         nightmareAC = GetComponent<Animator>();
@@ -95,16 +95,21 @@ public class VillainMovement : MonoBehaviour
             }
         }
     }
-/*    private void OnCollisionEnter(Collision collision)
-    {
-*//*        Debug.Log("collision");*//*
-        if (collision.gameObject.CompareTag("MainCharacter"))
+    /*    private void OnCollisionEnter(Collision collision)
         {
-            nightmareAC.SetTrigger("Attack");
-            audioSource.clip = nightmareSounds[0];
-*//*            gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial;
-            fadingMaterial.SetFloat("_FadeStartTime", Time.time);*//*
-            audioSource.Play();
-        }
-    }*/
+    *//*        Debug.Log("collision");*//*
+            if (collision.gameObject.CompareTag("MainCharacter"))
+            {
+                nightmareAC.SetTrigger("Attack");
+                audioSource.clip = nightmareSounds[0];
+    *//*            gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material = fadingMaterial;
+                fadingMaterial.SetFloat("_FadeStartTime", Time.time);*//*
+                audioSource.Play();
+            }
+        }*/
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, alertDistance);
+    }
 }

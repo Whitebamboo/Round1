@@ -130,4 +130,9 @@ public class SecondVillainMovement : MonoBehaviour
         }
 
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, alertDistance);
+    }
 }

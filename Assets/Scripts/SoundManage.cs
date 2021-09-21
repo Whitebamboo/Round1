@@ -13,12 +13,20 @@ public class SoundManage : MonoBehaviour
     [SerializeField] private AudioSource WITAudioSource;
     [SerializeField] private AudioSource screamingAudioSource;
     [SerializeField] private AudioSource winAudioSource;
+    [SerializeField] private AudioSource pullGateAudioSource;
+    [SerializeField] private AudioSource slideDoorAudioSource;
+    [SerializeField] private AudioSource MazeBaseAudioSource;
+    [SerializeField] private AudioSource playWinBGMAudioSource;
+    [SerializeField] private AudioSource playLoseBGMAudioSource;
+    [SerializeField] private AudioSource playLoseSFXAudioSource;
 
     public static SoundManage Instance;
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
+
+        //DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -67,5 +75,35 @@ public class SoundManage : MonoBehaviour
     public void PlayWinGameSound()
     {
         winAudioSource.Play();
+    }
+
+    public void PlayPullGateSound()
+    {
+        pullGateAudioSource.Play();
+    }
+
+    public void PlaySlideDoorSound()
+    {
+        slideDoorAudioSource.Play();
+    }
+
+    public void StopMazeBaseBGM()
+    {
+        MazeBaseAudioSource.Stop();
+    }    
+    
+    public void PlayWinBGM()
+    {
+        playWinBGMAudioSource.Play();
+    }
+
+    public void PlayLoseBGM()
+    {
+        playLoseBGMAudioSource.Play();
+    }
+
+    public void PlayLoseSFX()
+    {
+        playLoseSFXAudioSource.Play();
     }
 }

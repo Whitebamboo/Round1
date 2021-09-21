@@ -142,19 +142,39 @@ public class Player : MonoBehaviour
         Debug.Log("trigger");
         if (other.CompareTag("Destination"))
         {
-            endGameChangeScene();
+            StartCoroutine(endGameChangeScene());
         }
         else if (other.CompareTag("HelpSoundTrigger"))
         {
             SoundManage.Instance.PlayHelpSound();
         }
+        else if (other.CompareTag("PullGateTrigger"))
+        {
+            StartCoroutine("playPullGateSoundLoop");
+        }
+        else if (other.CompareTag("SlideDoorTrigger"))
+        {
+            SoundManage.Instance.PlaySlideDoorSound();
+        }
     }
 
     private IEnumerator endGameChangeScene()
     {
+        SoundManage.Instance.StopMazeBaseBGM();
         SoundManage.Instance.PlayWinGameSound();
+        SoundManage.Instance.PlayWinBGM();
         yield return new WaitForSeconds(10.5f);
         SceneManager.LoadScene(2);
+    }
+
+    private IEnumerator playPullGateSoundLoop()
+    {
+        while(this.gameObject.transform.position.x < -0.5f)
+        {
+            Debug.Log(this.gameObject.transform.position.x);
+            SoundManage.Instance.PlayPullGateSound();
+            yield return new WaitForSeconds(3f);
+        }
     }
 
 }
