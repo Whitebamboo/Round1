@@ -48,6 +48,11 @@ public class SoundManage : MonoBehaviour
         attactAudioSource.Play();
     }
 
+    public void StopAttackedSound()
+    {
+        attactAudioSource.Stop();
+    }
+
     public void PlayHelpSound()
     {
         int randomIndex = Random.Range(0, helpSound.Length);

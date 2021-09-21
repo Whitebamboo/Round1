@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
         time = slowDownDuration;
         winStatus = true;
         currentHealth = maxHealth;
+
+        Application.targetFrameRate = 120;
     }
 
     // Update is called once per frame
@@ -105,6 +107,7 @@ public class Player : MonoBehaviour
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log("currentHealth" + currentHealth);
     }
     private void GetHurt()
     {
@@ -142,6 +145,7 @@ public class Player : MonoBehaviour
         Debug.Log("trigger");
         if (other.CompareTag("Destination"))
         {
+            boyAC.Play("Idle");
             StartCoroutine(endGameChangeScene());
         }
         else if (other.CompareTag("HelpSoundTrigger"))
@@ -163,6 +167,7 @@ public class Player : MonoBehaviour
         SoundManage.Instance.StopMazeBaseBGM();
         SoundManage.Instance.PlayWinGameSound();
         SoundManage.Instance.PlayWinBGM();
+        SoundManage.Instance.StopAttackedSound();
         yield return new WaitForSeconds(10.5f);
         SceneManager.LoadScene(2);
     }
